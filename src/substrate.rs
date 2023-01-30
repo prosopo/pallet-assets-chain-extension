@@ -41,7 +41,6 @@ use obce::substrate::{
         chain_extension::Ext,
         Config as ContractConfig,
     },
-    sp_core::crypto::UncheckedFrom,
     sp_runtime::traits::StaticLookup,
     sp_std::vec::Vec,
     ExtensionContext,
@@ -63,7 +62,6 @@ where
     T: SysConfig + AssetConfig + ContractConfig,
     <<T as SysConfig>::Lookup as StaticLookup>::Source: From<<T as SysConfig>::AccountId>,
     E: Ext<T = T>,
-    <E::T as SysConfig>::AccountId: UncheckedFrom<<E::T as SysConfig>::Hash> + AsRef<[u8]>,
 {
     fn create(&mut self, id: T::AssetId, admin: T::AccountId, min_balance: T::Balance) -> Result<(), Error<T>> {
         // The contract should have money for the deposit
@@ -189,7 +187,6 @@ where
     T: SysConfig + AssetConfig + ContractConfig,
     <<T as SysConfig>::Lookup as StaticLookup>::Source: From<<T as SysConfig>::AccountId>,
     E: Ext<T = T>,
-    <E::T as SysConfig>::AccountId: UncheckedFrom<<E::T as SysConfig>::Hash> + AsRef<[u8]>,
 {
     fn origin(&mut self) -> T::RuntimeOrigin {
         RawOrigin::Signed(self.env.ext().address().clone()).into()
