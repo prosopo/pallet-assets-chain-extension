@@ -43,7 +43,7 @@ The crate can be imported on the smart contract side with `ink` and `ink-std` fe
 ...
 
 # Ink deps
-ink = { version = "~4.0.0-beta", default-features = false }
+ink = { version = "~4.0.0-rc", default-features = false }
 
 pallet-assets-chain-extension = { git = "https://github.com/727-Ventures/pallet-assets-chain-extension", default-features = false, features = ["ink"]  }
 # ^^^^^^^^^^^^^^^^^^^^^^^^^^^
